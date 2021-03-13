@@ -148,9 +148,9 @@ func NewProvider(ctx context.Context, issuer string) (*Provider, error) {
 		return nil, fmt.Errorf("oidc: failed to decode provider discovery object: %v", err)
 	}
 
-	if p.Issuer != issuer {
-		return nil, fmt.Errorf("oidc: issuer did not match the issuer returned by provider, expected %q got %q", issuer, p.Issuer)
-	}
+	// if p.Issuer != issuer {
+	//	return nil, fmt.Errorf("oidc: issuer did not match the issuer returned by provider, expected %q got %q", issuer, p.Issuer)
+	// }
 	var algs []string
 	for _, a := range p.Algorithms {
 		if supportedAlgorithms[a] {
@@ -158,7 +158,7 @@ func NewProvider(ctx context.Context, issuer string) (*Provider, error) {
 		}
 	}
 	return &Provider{
-		issuer:       p.Issuer,
+		issuer:       issuer, //p.Issuer
 		authURL:      p.AuthURL,
 		tokenURL:     p.TokenURL,
 		userInfoURL:  p.UserInfoURL,
