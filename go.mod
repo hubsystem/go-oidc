@@ -1,4 +1,4 @@
-module github.com/hubsystem/go-oidc/v3
+module github.com/hubsystem/go-oidc
 
 go 1.14
 
